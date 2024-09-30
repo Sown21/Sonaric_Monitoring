@@ -22,4 +22,6 @@ Example : hosts = ["Your_Node_Name1", "Your_Node_Name2"]
 
 cd Sonaric_Monitoring
 
+chmod +x sonaric.py
+
 python3 sonaric.py
