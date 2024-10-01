@@ -53,16 +53,17 @@ color_mapping = {
     "#0070FF": "Points entre 5000 et 7000",
     "#A335EE": "Points entre 7000 et 10000",
     "#FF8000": "Points supérieur à 10000"
-
 }
 
 if __name__ == "__main__":
   hosts = ["Your_Nodes_Names"]
   results = {}
+  total_points = 0
   for host in hosts:
     points = get_points(host)
     if points is not None:
       results[host] = points
+      total_points += points
 
   if results:
     df = pd.DataFrame.from_dict(results, orient='index', columns=['Points'])
@@ -81,6 +82,8 @@ if __name__ == "__main__":
     colored_legend = create_legend(color_mapping)
     print("----------------------")
     print(colored_legend)
+    table.add_row()
+    table.add_row("Total", str(total_points), style="bold #00ADEF")
 
     print(table)
   else:
